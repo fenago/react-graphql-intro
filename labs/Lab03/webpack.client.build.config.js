@@ -2,9 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const buildDirectory = 'dist';
-const outputDirectory = buildDirectory + '/client';
-
+const outputDirectory = 'dist';
 module.exports = {
     mode: 'production',
     entry: './src/client/index.js',
@@ -32,7 +30,7 @@ module.exports = {
        ]
     },
     plugins: [
-        new CleanWebpackPlugin([buildDirectory]),
+        new CleanWebpackPlugin([outputDirectory]),
         new HtmlWebpackPlugin({
           template: './public/index.html'
         }),

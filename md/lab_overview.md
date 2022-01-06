@@ -18,9 +18,9 @@ Screencasts: https://screencast-o-matic.com/channels/cr1rF0VozK
 
 ### Labs
 
-1. Preparing Your Development Environment
-2. Setting up GraphQL with Express.js
-3. Connecting to The Database
-4. Integrating React into the Back end with Apollo
-5. Reusable React Components
+3. Preparing Your Development Environment
+4. Setting up GraphQL with Express.js
+5. Connecting to The Database(Overview)
+6. Integrating React into the Back end with Apollo
+7. Reusable React Components
 

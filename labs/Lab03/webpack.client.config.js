@@ -1,8 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const buildDirectory = 'dist';
-const outputDirectory = buildDirectory + '/client';
+const outputDirectory = 'dist';
 module.exports = {
     mode: 'development',
     entry: './src/client/index.js',
@@ -30,7 +29,7 @@ module.exports = {
         open: 'midori'
     },
     plugins: [
-        new CleanWebpackPlugin([buildDirectory]),
+        new CleanWebpackPlugin([outputDirectory]),
         new HtmlWebpackPlugin({
           template: './public/index.html'
         })
