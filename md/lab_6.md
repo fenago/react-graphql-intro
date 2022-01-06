@@ -176,32 +176,13 @@ browser.
 
 The output should look like the following screenshot:
 
-
 ![](./images/4ecb00a7-fc05-4e51-b2ef-daaca48bfef4.png)
 
-
-The [data] object looks much like the response that we received
-when sending requests through Postman, except that, now, it has some new
-properties: [loading], [networkStatus], and [stale].
-Each of these stands for a specific status, as follows:
-
--   [loading], as you might expect, indicates whether the query is
-    still running or has already finished.
--   [networkStatus] goes beyond this and gives you the exact
-    status of what happened. For example, the number seven indicates
-    that there are no running queries that produce errors. The number
-    eight means that there has been an error. You can look up the other
-    numbers in the official GitHub repository, at
-    <https://github.com/apollographql/apollo-client/blob/master/packages/apollo-client/src/core/networkStatus.ts>.
--   [stale] is set whenever data is missing and is only partially
-    available to the user.
 
 Now that we have verified that the query has run successfully, we can
 connect Apollo Client to the React DOM. Please remove the temporary code
 that we wrote in this section before continuing. This includes
 everything except the import statement in the [App.js] file.
-
-
 
 Binding the Apollo Client to React
 ----------------------------------

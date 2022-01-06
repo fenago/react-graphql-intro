@@ -1047,7 +1047,7 @@ As you may have noticed, we have not installed FontAwesome yet. Let\'s
 fix this with [npm]:
 
 ```
-npm i --save @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/free-brands-svg-icons @fortawesome/react-fontawesome
+npm i --save @fortawesome/fontawesome-svg-core@1.2.12 @fortawesome/free-solid-svg-icons@5.6.3 @fortawesome/free-brands-svg-icons@5.6.3 @fortawesome/react-fontawesome@0.1.3
 ```
 
 
@@ -2647,7 +2647,3 @@ rendering.
 You also learned how to use the React Context API, in comparison with
 the Apollo Consumer feature, to retrieve the currently logged-in user in
 our application.
-
-In the next lab, you will learn how to implement authentication in
-your back end and use it in the front end.
-

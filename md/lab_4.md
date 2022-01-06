@@ -866,9 +866,6 @@ state of the application. The response to this mutation is an ordinary
 mutation, we will directly get the created post from the back end in
 response.
 
-The exclamation mark in the schema tells GraphQL that the field is a
-required parameter.
-
 The [RootMutation] type corresponds to the [RootQuery] type
 and is an object that holds all of our GraphQL mutations.
 
@@ -881,15 +878,6 @@ schema {
   mutation: RootMutation
 }
 ```
-
-
-**ProTip**
-
-Usually, the client does not send the user with the mutation. This is
-because the user is authenticated first, before adding a post, and
-through that, we already know which user initiated the Apollo request.
-However, we can ignore this for the moment and implement authentication
-later in Lab 6.
 
 
 The [addPost] resolver function needs to be implemented now in the
@@ -959,35 +947,14 @@ You can run this mutation via your preferred HTTP client like this:
 ```
 
 
-Here, we are using the [variables] property to send the data we
-want to insert in our back end. We need to pass them as parameters
-within the [query] string. We define both parameters with a dollar
-sign and the awaited data type inside the [operation] string.
-Those variables marked with a dollar sign can then be mapped into the
-actual action we want to trigger on the back end. Again, we need to send
-a selection of fields our response should have.
-
-The result will have a [data] object including an [addPost]
-field. The [addPost] field holds the post, which we send with our
-request.
-
 Query the posts again, and you will see that there are now three posts.
 Great, it worked!
-
-As with our client, this is only temporary until we restart the server.
-Next, we\'ll cover the various ways to debug your back end properly.
 
 
 Back end debugging and logging
 ==============================
 
-There are two things that are very important here: the first is that we
-need to implement logging for our back end in case we receive errors
-from our users, and the second is that we need to look into Postman to
-debug our GraphQL API efficiently.
-
-So, let\'s get started with logging.
-
+Let\'s get started with logging.
 
 
 Logging in Node.js
@@ -1041,29 +1008,7 @@ const logger = winston.createLogger({
 export default logger;
 ```
 
-
 This file can be imported everywhere where we want to log.
-
-In the preceding code, we defined the standard [transports] for
-[winston]. A transport is nothing more than the way in which
-[winston] separates and saves various log types in different
-files.
-
-The first [transport] generates an [error.log] file where
-only real errors are saved.
-
-The second transport is a combined log where we save all other log
-messages, such as warnings or info logs.
-
-If we are running the server in a development environment, which we are
-currently doing, we add a third transport. We will also directly log all
-messages to the console while developing on the server.
-
-Most people who are used to JavaScript development know the difficulty
-with [console.log]. By directly using [winston], we can see
-all messages in the terminal, but we do not need to clean the code from
-[console.log] either, as long as the things we log make sense, of
-course.
 
 To test this, we can try the [winston] logger in the only mutation
 we have.
@@ -1118,18 +1063,14 @@ The request body looks pretty much like what we saw before.
 
 **ProTip**
 
-In my case, I need to write the query inline because Postman is not able
+You might need to write the query inline if Postman is not able
 to handle multi-row text inside JSON. If this is not the case for you,
 please ignore it.
-
 
 Be sure to select [application/json] as [Content-Type] next
 to the [raw] format.
 
 The URL is localhost, including port [8000] as expected.
-
-If you add a new request, you can use the [Ctrl + S] shortcut to
-save it. You need to select a collection and a name to save it
 
 
 Summary
@@ -1143,8 +1084,3 @@ GraphQL mutations.
 Furthermore, we can log every process in our Node.js server. Debugging
 an application with Postman leads to a well-tested API, which can be
 used later in our front end.
-
-In the next lab, we will learn how to persist data in a SQL server.
-We will also implement models for our GraphQL types and cover migrations
-for our database. We need to replace our current [resolver]
-functions with queries via Sequelize.
