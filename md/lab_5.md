@@ -2,7 +2,7 @@
 <img align="right" src="./logo.png">
 
 
-Lab 3: Connecting to The Database
+Lab 5: Connecting to The Database
 ==========================
 
 
@@ -25,7 +25,7 @@ handle problems with existing SQL-based systems.
 
 Complete solution for this lab is available in the following directory:
 
-`cd ~/Desktop/react-graphql-course/labs/Lab03`
+`cd ~/Desktop/react-graphql-intro/labs/Lab05`
 
 Run following command to install all required packages:
 

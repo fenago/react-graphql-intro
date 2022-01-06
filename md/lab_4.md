@@ -1,7 +1,7 @@
 <img align="right" src="./logo.png">
 
 
-Lab 2: Setting up GraphQL with Express.js
+Lab 4: Setting up GraphQL with Express.js
 ==================================
 
 
@@ -23,7 +23,7 @@ This lab covers the following points:
 
 Complete solution for this lab is available in the following directory:
 
-`cd ~/Desktop/react-graphql-course/labs/Lab02`
+`cd ~/Desktop/react-graphql-intro/labs/Lab04`
 
 Run following command to install all required packages:
 

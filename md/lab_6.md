@@ -2,8 +2,8 @@
 <img align="right" src="./logo.png">
 
 
-Lab 4: Integrating React into the Back end with Apollo
-===============================================
+Lab 6: Integrating React into the Back end with Apollo
+======================================================
 
 
 In this lab, we will introduce Apollo\'s React client to our front
@@ -21,7 +21,7 @@ This lab will cover the following points:
 
 Complete solution for this lab is available in the following directory:
 
-`cd ~/Desktop/react-graphql-course/labs/Lab04`
+`cd ~/Desktop/react-graphql-intro/labs/Lab06`
 
 Run following command to install all required packages:
 

@@ -1,7 +1,7 @@
 <img align="right" src="./logo.png">
 
 
-Lab 1: Preparing Development Environment
+Lab 3: Preparing Development Environment
 ======================================
 
 
@@ -28,7 +28,7 @@ which looks as follows:
 
 Complete solution for this lab is available in the following directory:
 
-`cd ~/Desktop/react-graphql-course/labs/Lab01`
+`cd ~/Desktop/react-graphql-intro/labs/Lab03`
 
 Run following command to install all required packages for the solution only:
 
@@ -305,7 +305,7 @@ React component inside our template [index.html] file.
 Render your first React component
 ---------------------------------
 
-First, copy **uploads** folder from `~/Desktop/react-graphql-course/labs` and paste in `~/graphbook` folder.
+First, copy **uploads** folder from `~/Desktop/react-graphql-intro/labs` and paste in `~/graphbook` folder.
 
 ![](./images/5.png)
 
@@ -798,7 +798,7 @@ defined a title inside [index.html]. When React finishes
 rendering, the new document head is applied.
 
 **Note:** After doing all the changes, your `App.js` file should like this: 
-`~/Desktop/react-graphql-course/labs/Lab01/src/client/App.js`
+`~/Desktop/react-graphql-intro/labs/Lab03/src/client/App.js`
 
 
 Production build with webpack
@@ -878,7 +878,7 @@ new MiniCssExtractPlugin({
 5.  Remove the entire [devServer] property.
 
 
-**Note:** After doing the changes, your `webpack.client.build.config.js` file should like this: `~/Desktop/react-graphql-course/labs/Lab01/webpack.client.build.config.js`
+**Note:** After doing the changes, your `webpack.client.build.config.js` file should like this: `~/Desktop/react-graphql-intro/labs/Lab03/webpack.client.build.config.js`
 
 When running the new configuration, it won\'t spawn a server or browser
 window; it only creates a production JavaScript and CSS bundle, and

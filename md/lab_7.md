@@ -2,8 +2,8 @@
 <img align="right" src="./logo.png">
 
 
-Lab 5: Reusable React Components
-=========================
+Lab 7: Reusable React Components
+================================
 
 
 This lab will cover everything you need to know in order to write
@@ -21,7 +21,7 @@ topics:
 
 Complete solution for this lab is available in the following directory:
 
-`cd ~/Desktop/react-graphql-course/labs/Lab05`
+`cd ~/Desktop/react-graphql-intro/labs/Lab07`
 
 
 Introducing React patterns

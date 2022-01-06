@@ -1,4 +1,6 @@
-﻿### Lab 1: Introduction to GraphQL
+﻿<img align="right" src="./logo.png">
+
+### Lab 1: Introduction to GraphQL
 
 **Lab Solution** Solution is present in `Lab1` directory. Run `npm install` before running solution.
 
