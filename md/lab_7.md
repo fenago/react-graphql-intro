@@ -291,9 +291,6 @@ mind. It can be a complex condition, such as a function returning a
 Boolean value, or, just like in the preceding code, it can be a state
 variable.
 
-You will see further examples in later steps and chapters in this course.
-
-
 
 Rendering child components
 --------------------------

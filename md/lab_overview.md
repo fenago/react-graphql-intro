@@ -18,6 +18,8 @@ Screencasts: https://screencast-o-matic.com/channels/cr1rF0VozK
 
 ### Labs
 
+1. Introduction to GraphQL
+2. Exploring GraphQL APIs 
 3. Preparing Your Development Environment
 4. Setting up GraphQL with Express.js
 5. Connecting to The Database(Overview)

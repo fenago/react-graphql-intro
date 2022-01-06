@@ -34,16 +34,7 @@ Setting up Apollo Client
 ========================
 
 We have tested our GraphQL API multiple times during development. We can
-now start to implement the data layer of our front end code. In later
-chapters, we will focus on other tasks, such as authentication and
-client-side routing. For now, we will aim to use our GraphQL API with
-our React app.
-
-To start, we must install the React Apollo Client library. Apollo Client
-is a GraphQL client that offers excellent integration with React, and
-the ability to easily fetch data from our GraphQL API. 
-
-
+now start to implement the data layer of our front end code. To start, we must install the React Apollo Client library. 
 
 Installing Apollo Client
 ------------------------
