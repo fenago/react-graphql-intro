@@ -81,14 +81,12 @@ If you prefer to use a graphical user interface to send a test query, you can us
 
 It's also simple to send GraphQL from the browser. Open a developer console.
 
-**Do this: (Use FireFox Developer Console)**
+**Do this: (Use Midori Developer Console)**
 
-1. Right click on GraphiQL page inside Firefox and select `Inspect Element`:
+1. Right click on GraphiQL page inside Midori and select `Inspect Element`:
 ![](./images/tools.png)
 
-2. By default, Firefox does not allow you to paste stuff into the dev tools console. You have to manually type "allow paste" into the console to enable pasting. 
-
-3. Copy and paste following snippet in the firefox console:
+2. Copy and paste following snippet in the  console:
 
 ```
 fetch('https://swapi-graphql.netlify.app/.netlify/functions/index', {
