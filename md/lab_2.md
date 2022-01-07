@@ -91,13 +91,13 @@ It's also simple to send GraphQL from the browser. Open a developer console.
 3. Copy and paste following snippet in the firefox console:
 
 ```
-fetch('/graphql', {
+fetch('https://swapi-graphql.netlify.app/.netlify/functions/index', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   },
-  body: JSON.stringify({query: "{ hello }"})
+  body: JSON.stringify({query: "{ person(personID: 4) {  name  birthYear }}"})
 })
   .then(r => r.json())
   .then(data => console.log('data returned:', data));
