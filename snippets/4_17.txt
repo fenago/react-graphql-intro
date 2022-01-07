@@ -1,0 +1,31 @@
+<div className="openChats">
+  {openChats.map((chatId, i) => 
+    <Query key={"chatWindow" + chatId} query={GET_CHAT} 
+      variables={{ chatId }}>
+      {({ loading, error, data }) => {
+        if (loading) return <p>Loading...</p>;
+        if (error) return error.message;
+ 
+        const { chat } = data;
+ 
+        return (
+          <div className="chatWindow">
+            <div className="header">
+              <span>{chat.users[1].username}</span>
+              <button className="close">X</button>
+            </div>
+            <div className="messages">
+              {chat.messages.map((message, j) => 
+                <div key={'message' + message.id} className=
+                {'message ' + (message.user.id > 1 ? 'left' : 
+                'right')}>
+                  {message.text}
+                </div>
+              )}
+            </div>
+          </div>
+        )
+      }}
+    </Query>
+  )}
+</div>

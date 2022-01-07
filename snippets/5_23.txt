@@ -1,0 +1,12 @@
+export class UserConsumer extends Component {
+  render() {
+    const { children } = this.props;
+    return (
+      <Consumer>
+        {user => React.Children.map(children, function(child){
+          return React.cloneElement(child, { user });
+        })}
+      </Consumer>
+    )
+  }
+}

@@ -1,0 +1,41 @@
+export default class AvatarUpload extends Component {
+  state = { 
+    result: null,
+    filename: null,
+    filetype: null,      
+    src: null,
+    error: null,
+  }
+  onChange = value => {
+    this.setState(value);
+  }
+  uploadAvatar = () => {
+    const self = this;
+    var file = dataURItoBlob(this.state.result);
+    file.name = this.state.filename;
+    this.props.uploadAvatar({variables: { file }}).then(() => {
+      self.props.showModal();
+    });
+  }
+  changeImage = () => {
+    this.setState({ src: null });
+  }
+  render() {
+    return (
+      <Modal
+        isOpen={this.props.isOpen}
+        onRequestClose={this.props.showModal}
+        contentLabel="Change avatar"
+        style={modalStyle}
+      >
+        <DropNCrop onChange={this.onChange} value={this.state} />
+        {this.state.src !== null && (
+          <button className="cancelUpload" onClick=
+          {this.changeImage}>Change image</button>
+        )}
+        <button className="uploadAvatar" onClick=
+        {this.uploadAvatar}>Save</button>
+      </Modal>
+    )
+  }
+}

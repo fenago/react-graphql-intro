@@ -1,0 +1,41 @@
+{
+  "data": {
+    "chats": [{
+      "id": 1,
+      "users": [
+        {
+          "id": 1
+        },
+        {
+          "id": 2
+        }
+      ],
+      "messages": [
+        {
+          "id": 1,
+          "text": "This is a test message.",
+          "user": {
+            "id": 1,
+            "username": "Test User"
+          }
+        },
+        {
+          "id": 2,
+          "text": "This is a second test message.",
+          "user": {
+            "id": 2,
+            "username": "Test User 2"
+          }
+        },
+        {
+          "id": 3,
+          "text": "This is a third test message.",
+          "user": {
+            "id": 2,
+            "username": "Test User 2"
+          }
+        }
+      ]}
+    ]
+  }
+}

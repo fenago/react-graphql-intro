@@ -1,0 +1,20 @@
+<div className="feed">
+  <InfiniteScroll
+    loadMore={() => self.loadMore(fetchMore)}
+    hasMore={hasMore}
+    loader={<div className="loader" key={"loader"}>Loading ...</div>}
+  >
+    {posts.map((post, i) =>
+      <div key={post.id} className={"post " + (post.id < 0 ? 
+      "optimistic": "")}>
+        <div className="header">
+          <img src={post.user.avatar} />
+          <h2>{post.user.username}</h2>
+        </div>
+        <p className="content">
+          {post.text}
+        </p>
+      </div>
+    )}
+  </InfiniteScroll>
+</div>

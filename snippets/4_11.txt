@@ -1,0 +1,13 @@
+optimisticResponse= {{
+  __typename: "mutation",
+  addPost: {
+    __typename: "Post",
+    text: postContent,
+    id: -1,
+    user: {
+      __typename: "User",
+      username: "Loading...",
+      avatar: "/public/loading.gif"
+    }
+  }
+}}

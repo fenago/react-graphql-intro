@@ -1,0 +1,14 @@
+{
+"data": {
+"posts": [{
+"id": 1,
+"text": "Lorem ipsum 1",
+"user": null
+},
+{
+"id": 2,
+"text": "Lorem ipsum 2",
+"user": null
+}]
+}
+}

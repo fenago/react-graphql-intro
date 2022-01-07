@@ -1,0 +1,28 @@
+.bouncer {
+  margin: 20px auto;
+  border-radius: 100%; 
+  -webkit-animation: bounce 1.0s infinite ease-in-out;
+  animation: bounce 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: scale(0)
+  }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce {
+  0% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}

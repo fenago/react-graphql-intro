@@ -1,0 +1,23 @@
+openChat = (id) => {
+  var openChats = this.state.openChats.slice();
+  var textInputs = Object.assign({}, this.state.textInputs);
+  
+  if(openChats.indexOf(id) === -1) {
+    if(openChats.length > 2) {
+      openChats = openChats.slice(1);
+    }
+    openChats.push(id);
+    textInputs[id] = '';
+  }
+  this.setState({ openChats, textInputs });
+}
+
+closeChat = (id) => {
+  var openChats = this.state.openChats.slice();
+  var textInputs = Object.assign({}, this.state.textInputs);
+ 
+  const index = openChats.indexOf(id);
+  openChats.splice(index,1);
+  delete textInputs[id];
+  this.setState({ openChats, textInputs });
+}

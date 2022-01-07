@@ -1,0 +1,30 @@
+.chats {
+  background-color: #eee;
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  border-left: 1px solid #c3c3c3;
+}
+
+.chats .chat {
+  cursor: pointer;
+}
+
+.chats .chat .header > div {
+  width: calc(100% - 65px);
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.chats .chat .header h2, .chats .chat .header span {
+  color: #333;
+  font-size: 16px;
+  margin: 0;
+}
+
+.chats .chat .header span {
+  color: #333;
+  font-size: 12px;
+}

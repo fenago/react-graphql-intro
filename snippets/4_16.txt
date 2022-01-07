@@ -1,0 +1,25 @@
+<div className="chats">
+  <Query query={GET_CHATS}>
+    {({ loading, error, data }) => {
+      if (loading) return <p>Loading...</p>;
+      if (error) return error.message;
+ 
+      const { chats } = data;
+      
+      return chats.map((chat, i) => 
+        <div key={"chat" + chat.id} className="chat">
+          <div className="header">
+            <img src={(chat.users.length > 2 ? '/public/group.png' : 
+             chat.users[1].avatar)} />
+            <div>
+              <h2>{this.shorten(this.usernamesToString(chat.users))}
+              </h2>
+              <span>{chat.lastMessage && 
+              this.shorten(chat.lastMessage.text)}</span>
+            </div>
+          </div>
+        </div>
+      )
+    }}
+  </Query>
+</div>

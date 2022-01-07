@@ -1,0 +1,12 @@
+chats(root, args, context) {
+  return Chat.findAll({
+    include: [{
+      model: User,
+      required: true,
+      through: { where: { userId: context.user.id } },
+    },
+    {
+      model: Message,
+    }],
+  });
+},

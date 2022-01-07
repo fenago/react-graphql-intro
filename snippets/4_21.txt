@@ -1,0 +1,17 @@
+<Mutation
+    update = {(store, { data: { addMessage } }) => {
+        const data = store.readQuery({ query: GET_CHAT, variables: { 
+         chatId: chat.id } });
+        data.chat.messages.push(addMessage);
+        store.writeQuery({ query: GET_CHAT, variables: { chatId: chat.id }, 
+         data });
+    }}
+    mutation={ADD_MESSAGE}>
+        {addMessage => (
+        <div className="input">
+            <input type="text" value={textInputs[chat.id]} onChange={(event
+            ) => self.onChangeChatInput(event, chat.id)} onKeyPress={(event
+             ) => {self.handleKeyPress(event, chat.id, addMessage)}}/>
+        </div>
+        )}
+</Mutation>

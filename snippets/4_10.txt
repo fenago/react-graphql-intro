@@ -1,0 +1,6 @@
+<Mutation
+update = {(store, { data: { addPost } }) => {
+const data = store.readQuery({ query: GET_POSTS });
+data.posts.unshift(addPost);
+store.writeQuery({ query: GET_POSTS, data });
+}}

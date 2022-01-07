@@ -1,0 +1,26 @@
+async uploadAvatar(root, { file }, context) {
+  const { stream, filename, mimetype, encoding } = await file;
+  const bucket = 'apollobook';
+  const params = {
+    Bucket: bucket,
+    Key: context.user.id + '/' + filename,
+    ACL: 'public-read',
+    Body: stream
+  };
+  
+  const response = await s3.upload(params).promise();
+
+  return User.update({
+    avatar: response.Location
+  },
+  {
+    where: {
+      id: context.user.id
+    }
+  }).then(() => {
+    return {
+      filename: filename,
+      url: response.Location
+    }
+  });
+},

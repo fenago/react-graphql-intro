@@ -1,0 +1,18 @@
+import React, { Component } from 'react';
+import Modal from 'react-modal';
+import DropNCrop from '@synapsestudios/react-drop-n-crop';
+
+Modal.setAppElement('#root');
+
+const modalStyle = {
+  content: {
+    width: '400px',
+    height: '450px',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
+  }
+};

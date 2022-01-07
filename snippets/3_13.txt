@@ -1,0 +1,10 @@
+{
+"operationName":null,
+"query": "mutation addPost($post : PostInput!) { addPost(post : $post) {
+id text user { username avatar }}}",
+"variables":{
+"post": {
+"text": "You just added a post."
+}
+}
+}

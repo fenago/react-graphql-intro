@@ -1,0 +1,12 @@
+handleSubmit = (event) => {
+const self = this;
+event.preventDefault();
+const newPost = {
+text: this.state.postContent
+};
+this.props.addPost({ variables: { post: newPost }}).then(() => {
+self.setState((prevState) => ({
+postContent: ''
+}));
+});
+}

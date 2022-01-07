@@ -1,0 +1,16 @@
+const server = new ApolloServer({
+  schema: executableSchema,
+  context: async ({ req }) => {
+    const authorization = req.headers.authorization;
+    if(typeof authorization !== typeof undefined) {
+      var search = "Bearer";
+      var regEx = new RegExp(search, "ig");
+      const token = authorization.replace(regEx, '').trim();
+      return jwt.verify(token, JWT_SECRET, function(err, result) {
+        return req;
+      });
+    } else {
+      return req;
+    }
+  },
+});

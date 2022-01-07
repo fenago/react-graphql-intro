@@ -1,0 +1,14 @@
+export class UserProvider extends Component {
+  render() {
+    const { children } = this.props;
+    const user = {
+      username: "Test User",
+      avatar: "/uploads/avatar1.png"
+    };
+    return (
+      <Provider value={user}>
+        {children}
+      </Provider>
+    );
+  }
+}
