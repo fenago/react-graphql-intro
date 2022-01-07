@@ -55,6 +55,70 @@ is a `person` object with `name` and `birthYear` fields. In addition, the
 editor has live syntax and validation error highlighting for any text you type.
 
 
+### GraphQL Clients
+
+We can just send an HTTP POST request to the endpoint you mounted your GraphQL server on, passing the GraphQL query as the query field in a JSON payload.
+
+We want to send the query to GraphQL server. We can do this from the command line with curl. If you paste this into a terminal:
+
+**Do this:**
+
+```
+curl -X POST \
+-H "Content-Type: application/json" \
+-d '{"query": "{ person(personID: 4) {  name  birthYear }}"}' \
+https://swapi-graphql.netlify.app/.netlify/functions/index
+```
+
+**Output**
+You should see the output returned as JSON:
+
+`{"data":{"person":{"name":"Darth Vader","birthYear":"41.9BBY"}}}`
+
+![](./images/client1.png)
+
+If you prefer to use a graphical user interface to send a test query, you can use clients such as GraphiQL and Insomnia.
+
+It's also simple to send GraphQL from the browser. Open a developer console.
+
+**Do this: (Use FireFox Developer Console)**
+
+1. Right click on GraphiQL page inside Firefox and select `Inspect Element`:
+![](./images/tools.png)
+
+2. By default, Firefox does not allow you to paste stuff into the dev tools console. You have to manually type "allow paste" into the console to enable pasting. 
+
+3. Copy and paste following snippet in the firefox console:
+
+```
+fetch('/graphql', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  },
+  body: JSON.stringify({query: "{ hello }"})
+})
+  .then(r => r.json())
+  .then(data => console.log('data returned:', data));
+```
+
+**Output**
+You should see the data returned, logged in the console:
+
+```
+{
+  "data": {
+    "person": {
+      "name": "Darth Vader",
+      "birthYear": "41.9BBY"
+    }
+  }
+}
+```
+
+![](./images/client2.png)
+
 
 #### GraphQL Query
 
@@ -71,7 +135,7 @@ editor has live syntax and validation error highlighting for any text you type.
 
 Go to https://graphql.org/swapi-graphql/ to Launch the GraphiQL Interface:
 
-Please add the following Query:
+Please run the following Query:
 
 
 ```
