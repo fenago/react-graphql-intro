@@ -160,7 +160,15 @@ For example, to get the above command working follow the steps below:
 
 ```
 npm install --save-dev @babel/node@7.0.0
+
+rm package-lock.json 
+
+rm -r node_modules/
+
+npm install
 ```
+
+Make sure to run above instructions sequentially.
 
 2.  Start the server now:
 
