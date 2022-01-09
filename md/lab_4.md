@@ -11,7 +11,7 @@ all the essential features of Express.js.
 
 This lab covers the following points:
 
--   Express.js installation and explanation
+-   Express.js installation
 -   Routing in Express.js
 -   Middleware in Express.js
 -   Binding Apollo Server to a GraphQL endpoint
@@ -51,16 +51,16 @@ Node.js and Express.js
 **Note:** You can use project created in Lab 1.
 
 Installing Express.js is pretty easy. We can use npm in the same way as
-in the first lab:
+in the previous lab:
 
 ```
+cd ~/graphbook
+
 npm install --save express@4.16.4
 ```
 
 
-This command adds the latest version of Express to [package.json].
-
-In the first lab, we created all JavaScript files directly in the
+In the previous lab, we created all JavaScript files directly in the
 [src/client] folder. Now, let\'s create a separate folder for our
 server-side code. This separation gives us a tidy directory structure.
 We will create the folder with the following command:
@@ -114,13 +114,6 @@ To match all paths, you use an asterisk, which generally stands for
 [any] in the programming environment, as we have done it in the
 preceding [app.get] line.
 
-The last step to make our server publicly available is to tell
-Express.js on which port it should listen for requests. In our code, we
-are using [8000] as the first parameter of [app.listen]. You
-can replace [8000] with any port or URL you want to listen on. The
-callback is executed when the HTTP server binding has finished, and
-requests can be accepted on this port.
-
 **Note:** After doing the changes, your `index.js` file should like this:
 
 ```
@@ -169,13 +162,6 @@ For example, to get the above command working follow the steps below:
 npm install --save-dev @babel/node@7.0.0
 ```
 
-
-Providing [\--watch] as the option following a path or file will
-permanently track changes on that file or folder and reload the server
-to represent the latest state of your application. The last parameter
-refers to the actual file being the starting execution point for the
-back end.
-
 2.  Start the server now:
 
 ```
@@ -193,22 +179,10 @@ callback function.
 Routing in Express.js
 =====================
 
-Understanding routing is essential to extend our back end code. We are
-going to play through some simple routing examples.
-
-In general, routing stands for how an application responds to specific
-endpoints and methods.
-
 In Express.js, one path can respond to different HTTP methods and can
 have multiple handler functions. These handler functions are executed
 one by one in the order they were specified in the code. A path can be a
 simple string, but also a complex regular expression or pattern.
-
-When using multiple handler functions --- either provided as an array or
-multiple parameters---be sure to pass [next] to every callback
-function. When you call [next], you hand over the execution from
-one callback function to the next function in the row. Those functions
-can also be middleware. We\'ll cover this in the next section.
 
 Here is a simple example. Replace this with the current [app.get] line:
 
