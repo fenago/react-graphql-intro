@@ -246,28 +246,6 @@ app.get('/', (req, res) => {
 app.listen(8000, () => console.log('Listening on port 8000!'));
 ```
 
-Express.js provides the [use] function which runs a series of
-commands when a given path matches. When executing this function without
-a path, it is executed for every request.
-
-We use this feature to serve our static files (the avatar images) with
-[express.static]. They include [bundle.js] and
-[bundle.css], created by `npm run client:build`.
-
-In our case, we first pass [\'/\'] with [express.static]
-following it. The result of this is that all files and folders in
-[dist] are served beginning with [\'/\']. Other paths in the
-first parameter of [app.use], such as [\'/example\'], would
-lead to the result that our [bundle.js] would be downloadable
-under [\'/example/bundle.js\'] instead.
-
-For example, all avatar images are served under [\'/uploads/\'].
-
-We are now prepared to let the client download all necessary files. The
-initial route for our client is [\'/\'] specified by
-[app.get]. The response to this path is [index.html]. We run
-[res.sendFile] and the file path to return this file---that is all
-we have to do here.
 
 Be sure to execute `npm run client:build` first. Otherwise, you
 will receive an error message that these files were not found.
@@ -328,23 +306,6 @@ app.use(helmet.contentSecurityPolicy({
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 ```
 
-
-We are doing multiple things here at once. We add some
-**XSS(Cross-Site-Scripting)** protection tactics and remove the
-[X-Powered-By] HTTP header and some other useful things just by
-using the [helmet()] function in the first line.
-
-Furthermore, to ensure that no one can inject malicious code, we are
-using the [Content-Security-Policy] HTTP header or, in short, CSP.
-This header prevents attackers from loading resources from external
-URLs.
-
-The last enhancement is to set the [Referrer] HTTP header only
-when making requests on the same host. When going from domain A to
-domain B, for example, we do not include the referrer, which is the URL
-the user is coming from. This enhancement stops any internal routing or
-requests being exposed to the internet.
-
 It is important to initialize Helmet very high in your Express router so
 that all responses are affected.
 
@@ -378,6 +339,11 @@ app.use(cors());
 We can move on now and finally set up a GraphQL server.
 
 
+**Note:** After doing the above changes, you can compare your `server/index.js` file with the solution file:
+
+`/root/Desktop/react-graphql-intro/labs/Lab04/src/server/index.js`
+
+
 Combining Express.js with Apollo
 ================================
 
@@ -396,6 +362,8 @@ mkdir src/server/services/
 mkdir src/server/services/graphql
 ```
 
+
+Create `index.js` file in graphql directory.
 
 Our GraphQL service must handle multiple things for initialization.
 Let\'s go through all of them one by one:
@@ -459,13 +427,29 @@ export default server;
 ```
 
 
-Now that we are exporting the Apollo Server, it needs to be imported
-somewhere else, of course. I find it convenient to have one
-`index.js` file on the services layer so that we only rely on this
-file if a new service is added.
+**Note:** After doing the changes, your `graphql/index.js` file should like this:
 
-Create an `index.js` file in the [services] folder and enter
-the following code:
+```
+import { ApolloServer } from 'apollo-server-express';
+import {makeExecutableSchema} from 'graphql-tools';
+import Resolvers from './resolvers';
+import Schema from './schema';
+
+const executableSchema = makeExecutableSchema({
+  typeDefs: Schema,
+  resolvers: Resolvers,
+});
+
+const server = new ApolloServer({
+  schema: executableSchema,
+  context: ({ req }) => req,
+});
+
+export default server;
+```
+
+Now that we are exporting the Apollo Server, it needs to be imported
+somewhere else, of course. Create an `index.js` file in the [services] folder and enter the following code:
 
 ```
 import graphql from './graphql';
@@ -557,42 +541,7 @@ export default [typeDefinitions];
 
 
 The preceding code represents a basic schema, which would be able to at
-least serve the fake posts array from Lab 1, excluding the users.
-
-First, we define a new type called [Post]. A [Post] type has
-[id] as [Int] and [text] as [String].
-
-For our GraphQL server, we need a type called [RootQuery]. The
-[RootQuery] type wraps all of the queries a client can run. It can
-be anything from requesting all posts, all users, or posts by just one
-user, and so on. You can compare this to all [GET] requests as you
-find them with a common REST API. The paths would be [/posts],
-[/users], and [/users/ID/posts] to represent the GraphQL API
-as a REST API. When using GraphQL, we only have one route, and we send
-the query as a JSON-like object.
-
-The first query we will have is going to return an array of all of the
-posts we have got.
-
-If we query for all posts and want to return each user with its
-corresponding post, this would be a sub-query that would not be
-represented in our [RootQuery] type but in the [Post] type
-itself. You will see how it is done later.
-
-At the end of the JSON-like schema, we add [RootQuery] to the
-[schema] property. This type is the starting point for the Apollo
-Server.
-
-Later, we are going to add the mutation key to the schema where we
-implement a [RootMutation] type. It is going to serve all of the
-actions a user can run. Mutations are comparable to the [POST],
-[UPDATE], [PATCH], and [DELETE] requests of a REST
-API.
-
-At the end of the file, we export the schema as an array. If we wanted
-to, we could push other schemas to this array to merge them.
-
-The last thing missing here is the implementation of our resolvers.
+least serve the fake posts array from Lab 1, excluding the users. The last thing missing here is the implementation of our resolvers.
 
 
 
@@ -632,20 +581,6 @@ something that matches the schema. So, if you have an array of
 return something different, such as just one post object instead of an
 array. In that case, you would receive an error.
 
-Furthermore, GraphQL checks the data type of every property. If
-[id] is defined as [Int], you cannot return a regular
-MongoDB [id] since these ids are of type [String]. GraphQL
-would throw an error too.
-
-**ProTip**
-
-GraphQL will parse or cast specific data types for you if the value type
-is matching. For example, a [string] with the value of [2.1]
-is parsed to [Float] without any problems. On the other hand, an
-empty string cannot be converted to [Float], and an error would be
-thrown. It is better to directly have the correct data types, because
-this saves you casting and also prevents unwanted problems.
-
 
 Our [posts] query will return an empty array, which would be a
 correct response for GraphQL. We will come back to the [resolver]
@@ -657,10 +592,7 @@ start the server again.
 Sending GraphQL queries
 -----------------------
 
-We can test this query using any HTTP client, such as Postman, Insomnia,
-or any you are used to. This course covers HTTP clients in the next
-section of this lab. If you want to send the following queries on
-your own, you can read the next section and come back here.
+We can test this query using Postman:
 
 You can test our new function when you send the following JSON as a
 [POST] request to [http://localhost:8000/graphql]:
@@ -788,11 +720,8 @@ you need to provide a sub-selection of fields. This is required whenever
 you have multiple GraphQL types stacked inside each other. Then, you
 need to select the fields your result should contain.
 
-Running the updated query gives us the fake data, which we already have
-in our front end code; just the [posts] array as it is.
 
-We have made good progress with querying data, but we also want to be
-able to add and change data.
+We have made good progress with querying data, but we also want to be able to add and change data.
 
 
 

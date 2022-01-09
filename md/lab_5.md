@@ -11,6 +11,13 @@ This lab will cover the following points:
 - Writing database models
 - Using Apollo together with Sequelize
 
+#### Start MySQL and phpMyAdmin
+
+```
+service mysql start
+
+service apache2 start
+```
 
 #### Lab Solution
 
@@ -25,15 +32,6 @@ Run following command to install all required packages:
 ![](./images/vscode2.png) 
 
 
-#### Start MySQL and phpMyAdmin
-
-```
-service mysql start
-
-service apache2 start
-```
-
-
 #### Running Solution
 
 Run following commands to run application:
@@ -41,6 +39,8 @@ Run following commands to run application:
 `npm run client:build`
 
 `npm run server`
+
+<span style="color:red;">Note!</span> Database migrations and seeds have been executed already. Run the lab solution and optionally also go through lab to understand changes done to integrate application with MYSQL database.
 
 
 MySQL and phpMyAdmin

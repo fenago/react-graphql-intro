@@ -36,6 +36,10 @@ Setting up Apollo Client
 We have tested our GraphQL API multiple times during development. We can
 now start to implement the data layer of our front end code. To start, we must install the React Apollo Client library. 
 
+<span style="color:red;">Note!</span> You can clone `Lab05` solution and follow below instructions to complete this lab.
+
+`cd ~/Desktop/react-graphql-intro/labs/Lab05`
+
 Installing Apollo Client
 ------------------------
 
