@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "40dd17c0-207d-45fc-a659-ab99abb00c47",
+		"name": "Book",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Posts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"operationName\": null,\n  \"query\": \"{ posts { id text } }\", \n  \"variables\": {} \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"operationName\": null, \n  \"query\": \"mutation addPost($post : PostInput!, $user: UserInput!) { addPost(post : $post, user: $user) { id text user { username avatar } } }\",\n  \"variables\": {\n    \"post\": { \n      \"text\": \"You just added a post.\"\n    },\n    \"user\": {\n      \"avatar\": \"/uploads/avatar3.png\",\n      \"username\": \"Fake User\"\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
