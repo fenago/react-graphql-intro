@@ -1580,26 +1580,6 @@ export default ({post, changeState}) =>
 FontAwesome is useful now. The drop-down trigger is displayed in the
 same row as the username.
 
-Our drop-down component receives a [trigger] component, which is
-just a FontAwesome icon. Furthermore, the only child that our drop-down
-component has, for now, is a simple button. When it is clicked, it
-changes the parent [Post] component\'s editing state and makes the
-update post form visible, instead of the normal post content.
-
-Nothing works without the magic of CSS. All of the CSS takes up a lot of
-space, so you should look it up in the official Git repository of this
-book. If you have added the new CSS, you should be able to see a small
-icon on the right-hand border of each post. Clicking on it makes a small
-drop-down menu visible, including the \'Edit\' button, as shown at the
-beginning of this section. The user is now able to make in-place edits
-of posts with the post update form.
-
-Something that we have not spoken about is user rights. At the moment,
-the user can edit everybody\'s posts, even if the user is not the author
-of the post. That is a problem that we will look into in the next
-lab, when we have implemented authentication.
-
-
 
 The Apollo deletePost mutation
 ------------------------------
