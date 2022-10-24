@@ -263,6 +263,17 @@ the root server folder. Add the following code:
 import db from './database';
 ```
 
+Also, add following code in `index.js`:
+
+```
+import servicesLoader from './services';
+
+const utils = {
+    db,
+};
+const services = servicesLoader(utils);
+```
+
 
 Seeding data with Sequelize
 ===========================
@@ -772,6 +783,8 @@ Creating a new message
 We can use the [addPost] mutation as our basis, and extend it. The
 result accepts a [chatId] and uses the first user from our
 database.
+
+**Make sure to add complete code from following `resolvers.js` file in your final code.**
 
 **Action:** Review File: `~/Desktop/react-graphql-intro/labs/Lab05/src/server/services/graphql/resolvers.js`
 
